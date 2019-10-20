@@ -1,0 +1,17 @@
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\controllers\CookBookController.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\entities\Recipe.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\PrototypeApplication.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\security\AuthenticatedUser.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\entities\User.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\security\MyUserDetailsService.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\repositories\CookBookRepository.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\controllers\AdminController.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\controllers\LoginAndRegisterController.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\controllers\UserController.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\security\WebSecurityConfig.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\controllers\RecipeController.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\entities\CookBook.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\repositories\RecipeRepository.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\security\CustomBasicAuthenticationEntryPoint.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\repositories\UserRepository.java
+D:\Documents\alkfejl2019-master-2\alkfejl2019-master\Prototype_\src\main\java\hu\alkfejl2019\prototype\entities\BaseEntity.java
