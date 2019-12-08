@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import hu.alkfejl2019.prototype.entities.User;
 import hu.alkfejl2019.prototype.repositories.UserRepository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("")
@@ -44,5 +46,11 @@ public class LoginAndRegisterController {
 		 return ResponseEntity.ok(usr.get());
              }
              return ResponseEntity.ok().build();
+	 }
+         @GetMapping("/usr/{username}") 
+	 public ResponseEntity<User> loginData(@PathVariable("username") String username) {
+             System.out.println("asd");
+             Optional<User> usr = userRepository.findByName(username);
+             return ResponseEntity.ok(usr.get());
 	 }
 }
