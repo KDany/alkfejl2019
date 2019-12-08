@@ -29,11 +29,11 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     	
-    	Optional<User> oUser = userRepository.findByEmail(email);
+    	Optional<User> oUser = userRepository.findByName(username);
         if (!oUser.isPresent()) {
-            throw new UsernameNotFoundException(email);
+            throw new UsernameNotFoundException(username);
         }
         
         User user = oUser.get();

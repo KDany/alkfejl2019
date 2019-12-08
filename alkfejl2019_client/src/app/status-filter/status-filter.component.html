@@ -1,0 +1,9 @@
+Cookbooks: 
+<mat-button-toggle-group (change)="onFilterChange(group.value)" [value]="selectedStatus" #group="matButtonToggleGroup">
+    <mat-button-toggle value="">
+      ALL
+    </mat-button-toggle>
+    <mat-button-toggle value="{{status}}"  *ngFor="let status of statuses">
+      {{ status }}
+    </mat-button-toggle>
+  </mat-button-toggle-group>

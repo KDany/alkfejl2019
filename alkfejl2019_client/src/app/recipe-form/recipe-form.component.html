@@ -1,0 +1,65 @@
+<form (submit)="submit(recipeForm)" #recipeForm="ngForm">
+  <div class="form-group">
+    <!-- <small id="authorHelp" class="form-text text-muted">Give the author of the recipe (e.g. labor)</small> -->
+    <mat-form-field>
+      <input matInput
+        type="text"
+        name="title"
+        [(ngModel)]="model.title"
+        aria-describedby="titleHelp"
+        placeholder="Enter title"
+        required
+        #title="ngModel">
+    </mat-form-field>
+    <mat-error *ngIf="title.invalid && (title.dirty || title.touched) && title.errors.required">
+      Title is required!
+    </mat-error>
+  </div>
+
+  <!--<div class="form-group">
+    <mat-form-field>
+      <input matInput
+        type="text"
+        name="author"
+        [(ngModel)]="model.author"
+        aria-describedby="authorHelp"
+        placeholder="Enter author"
+        required
+        #author="ngModel">
+    </mat-form-field>
+    <mat-error *ngIf="author.invalid && (author.dirty || author.touched) && author.errors.required">
+      Author is required!
+    </mat-error>
+  </div>-->
+    
+    <div class="form-group">
+      <!-- <small id="ingredientsHelp" class="form-text text-muted">The error details</small> -->
+      <mat-form-field>
+        <textarea matInput
+          name="ingredients"
+          [(ngModel)]="model.ingredients"
+          aria-describedby="ingredientsHelp"
+          placeholder="Enter ingredients">
+        </textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <!-- <small id="descriptionHelp" class="form-text text-muted">The error details</small> -->
+      <mat-form-field>
+        <textarea matInput
+          name="description"
+          [(ngModel)]="model.description"
+          aria-describedby="descriptionHelp"
+          placeholder="Enter description">
+        </textarea>
+      </mat-form-field>
+    </div>
+    
+    <button mat-raised-button
+      [disabled]="!recipeForm.valid" 
+      type="submit"
+      color="primary">
+      Save recipe
+    </button>
+  </form>

@@ -25,7 +25,6 @@ import hu.alkfejl2019.prototype.repositories.RecipeRepository;
 import hu.alkfejl2019.prototype.security.AuthenticatedUser;
 
 @RestController
-@Secured({ "ROLE_USER" })
 @RequestMapping("/user/{user_id}/cookbooks/{cook_book_id}/recipes")
 public class RecipeController {	
 	
@@ -41,10 +40,7 @@ public class RecipeController {
 	@GetMapping("")
 	public ResponseEntity<Iterable<Recipe>> getUserRecipesFromACookBook(@PathVariable("user_id") Integer userId,
 			@PathVariable("cook_book_id") Integer cookBookId) {
-		
-		if (!authenticatedUser.getUser().getId().equals(userId)) {
-			 return ResponseEntity.badRequest().build();
-		}
+		System.out.println("anytginf");
 		
 		Optional<CookBook> cookBook = cookBookRepository.findByUserIdAndCookBookId(userId, cookBookId);
 		if (cookBook.isPresent()) {

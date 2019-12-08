@@ -1,0 +1,19 @@
+
+<h1 class="display-2">Recipe #{{ recipe.id }}</h1>
+<dl class="row">
+  <dt class="col-sm-3">Title</dt>
+  <dd class="col-sm-9">{{ recipe.title }}</dd>
+
+  <dt class="col-sm-3">Author</dt>
+  <dd class="col-sm-9">{{ recipe.author }}</dd>
+  
+  <dt class="col-sm-3">Ingredients</dt>
+  <dd class="col-sm-9" width="30">{{ recipe.ingredients }}</dd>
+
+  <dt class="col-sm-3">Description</dt>
+  <dd class="col-sm-9">{{ recipe.description }}</dd>
+  
+  <dt class="col-sm-3">Status</dt>
+  <dd class="col-sm-9">{{ recipe.status }}</dd>
+</dl>
+<button mat-raised-button routerLink="/recipes">Back</button>
