@@ -16,6 +16,8 @@ export class AuthService {
   public isLoggedIn: boolean = false;
   public user: User;
   public redirectUrl: string;
+  public username: string;
+  public password: string;
 
   private authUrl: string = 'http://localhost:8080';
 
@@ -25,17 +27,26 @@ export class AuthService {
 
   async login(username: string, password: string): Promise<User> {
     try {
+      this.username = username;
+      this.password = password;
+      this.user = await this.getUser();
       const token = btoa(`${username}:${password}`);
       httpOptions.headers = httpOptions.headers.set('Authorization', `Basic ${token}`);
-      const userr = await this.http.post<User>(`${this.authUrl}/login`, {}, httpOptions).toPromise();
-      this.isLoggedIn = true;
-      this.user = userr;
-      console.log(userr.id);
-      return Promise.resolve(this.user);
+      await this.http.post<User>(`${this.authUrl}/login`, {}, httpOptions).toPromise().then(posts => {    
+        this.isLoggedIn = true;
+        return Promise.resolve(this.user);
+      }).catch(error => console.log(error))
+      //this.user = user;
+
     } catch (e) {
       console.log(e);
       return Promise.reject();
     }
+  }
+  getUser(): Promise<User> {
+    const token = btoa(`${this.username}:${this.password}`)
+    httpOptions.headers = httpOptions.headers.set('Authorization', `Basic ${token}`);
+    return this.http.get<User>(`http://localhost:8080/usr/`+this.username, httpOptions).toPromise();
   }
   
   logout() {

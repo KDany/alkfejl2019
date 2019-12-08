@@ -9,7 +9,7 @@
     <div *ngIf="authService.isLoggedIn">
       <button mat-button routerLink="/recipes">My recipes</button>
       <button mat-button routerLink="/recipes/add">New recipe</button>
-      <span>Hello {{ authService.user.username }}!</span>
+      <span>Hello !</span>
       <button mat-button (click)="logout()">Logout</button>
     </div>
     <div *ngIf="!authService.isLoggedIn">
