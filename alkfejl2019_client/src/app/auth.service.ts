@@ -44,7 +44,7 @@ export class AuthService {
     }
   }
   getUser(): Promise<User> {
-    const token = btoa(`${this.username}:${this.password}`)
+    const token = btoa(`${this.username}:${this.password}`);
     httpOptions.headers = httpOptions.headers.set('Authorization', `Basic ${token}`);
     return this.http.get<User>(`http://localhost:8080/usr/`+this.username, httpOptions).toPromise();
   }

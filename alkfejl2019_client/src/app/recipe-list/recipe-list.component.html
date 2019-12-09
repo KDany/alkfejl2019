@@ -12,16 +12,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let recipe of filteredRecipes" (click)="onSelectRecipe(recipe)" [class.table-info]="recipe === selectedRecipe" >
-            <th scope="row">{{ recipe.id }}</th>
+          <tr *ngFor="let recipe of filteredRecipes" (click)="onSelectRecipe(id)" [class.table-info]="recipe === selectedRecipe" >
+            <th scope="row">{{ recipe?.id }}</th>
             <td>
-              <a [routerLink]="['/recipes', recipe.id]">
+              <a [routerLink]="['/recipes', id]">
                 {{ recipe.title }}
               </a>
             </td>
-            <td>{{ recipe.author }}</td>
+            <td>{{ authService.username }}</td>
             <td>{{ recipe.description }}</td>
-            <td>{{ recipe.status }}</td>
+            <!--<td>{{ recipe.status }}</td>-->
             <td>
               <button mat-raised-button color="primary" (click)="onDeleteClick(recipe.id)">Delete</button>
             </td>

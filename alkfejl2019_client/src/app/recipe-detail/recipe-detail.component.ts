@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe';
+import { AuthService } from '../auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../recipe.service';
 
@@ -10,14 +11,15 @@ import { RecipeService } from '../recipe.service';
 })
 export class RecipeDetailComponent implements OnInit {
   
-  public recipe: Recipe = null;
+  public recipe: Recipe = null;  
 
   constructor(
     private route: ActivatedRoute,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private authService: AuthService
   ) { }
   
-  async ngOnInit(): Promise<void> {
+  async ngOnInit(): Promise<void> {    
     const id = +this.route.snapshot.paramMap.get('id');
     this.recipe = await this.recipeService.getRecipe(id);
   }

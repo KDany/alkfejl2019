@@ -8,7 +8,7 @@ import { AuthService, httpOptions } from './auth.service';
 })
 export class RecipeService {
   
-  private recipeUrl: string = 'http://localhost:8080/user/'+this.authService.user.id+'/cookbooks/2/recipes'; // 2 helyére majd a kiválasztott cookbook id-je. (ha lesz rá idő)
+  private recipeUrl: string = 'http://localhost:8080/user/'+this.authService.user.id+'/cookbooks/2/recipes'; 
 
   constructor(
     private http: HttpClient,

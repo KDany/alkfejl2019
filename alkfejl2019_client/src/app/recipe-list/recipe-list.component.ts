@@ -17,7 +17,6 @@ export class RecipeListComponent implements OnInit {
   public statusFilterComponent: StatusFilterComponent;
 
   public recipes: Recipe[] = [];
-  private owners: string[] = [];
   private user: string;
 
   constructor(
@@ -25,37 +24,14 @@ export class RecipeListComponent implements OnInit {
     public authService: AuthService
   ) {
     console.log(this);
-    //this.setOwners();  
   }
-
-  /*getOwners(): string[] {
-    return this.owners;
-  }
-
-  setOwners(): void {a
-    var i;
-    var array = [];
-    for (i = 0; this.recipes.length; i++) {
-      array.push(this.recipes[i].status.toUpperCase());
-    }
-    //array.filter((item, index) => array.indexOf(item) === index);
-    this.owners = array;
-    console.log(array);
-  }
-
-  appendOwner(string: string): void {
-    /*var array = this.owners;
-    array.push(string);
-    array.filter((item, index) => array.indexOf(item) === index);
-    this.owners = array;
-    this.owners.push(string);
-  }*/
 
   async ngOnInit(): Promise<void> {
+    
+    this.user = this.authService.username;  
     this.selectedStatus = '';
     this.recipes = await this.recipeService.getRecipes();
-    //this.setOwners();
-    this.user = this.authService.user.username;  
+    console.log("this.user: " + this.user);
     this.filter();
     this.reloadRecipesStatus();
   }
@@ -80,23 +56,22 @@ export class RecipeListComponent implements OnInit {
 
   async onFormSubmit(recipe: Recipe): Promise<void> {
     if (recipe.id > 0) {
-      await this.recipeService.updateRecipe(recipe)
-      this.selectedRecipe.author = recipe.author;
+      await this.recipeService.updateRecipe(recipe);
+      //this.selectedRecipe.author = this.user;
       this.selectedRecipe.title = recipe.title;
-      this.selectedRecipe.ingredients = recipe.ingredients;
+      //this.selectedRecipe.ingredients = recipe.ingredients;
       this.selectedRecipe.description = recipe.description;
       
     } else {
       this.selectedRecipe.id = Math.floor(Math.random()*1000000);
-      this.selectedRecipe.author = recipe.author;
+      //this.selectedRecipe.author = this.user;
       this.selectedRecipe.title = recipe.title;
-      this.selectedRecipe.ingredients = recipe.ingredients;
+     // this.selectedRecipe.ingredients = recipe.ingredients;
       this.selectedRecipe.description = recipe.description;
-      //this.selectedRecipe.status = 'NEW';
-      recipe.status = this.user.toUpperCase();
-      recipe.author = this.user;
-      this.recipeService.createRecipe(recipe)
-                        .then(createdRecipe => {
+      this.selectedRecipe.status = 'B';
+      recipe.status = this.user;
+      //recipe.author = this.user;
+      this.recipeService.createRecipe(recipe).then(createdRecipe => {
                           this.recipes.push(createdRecipe);
                           this.reloadRecipesStatus();
                         });
@@ -109,17 +84,13 @@ export class RecipeListComponent implements OnInit {
   }
   
   onDeleteClick(id: number) {
-    this.recipeService.getRecipe(id).then((recipe) => {
-      if(this.user.toUpperCase() !== recipe.status && this.user.toUpperCase() !== "ADMIN") {
-        return;
-      }
-      this.recipeService.deleteRecipe(id).then(async () => {
-      this.selectedRecipe = null;
+    this.recipeService.deleteRecipe(id).then(async deletedRecipe => {
+      var index = this.recipes.indexOf(deletedRecipe);
+      if (index > -1) {
+        this.recipes.splice(index, 1);
+      }      
       this.recipes = await this.recipeService.getRecipes();
-      this.filter();
-      this.reloadRecipesStatus();
-    })
-    } );
+    });
   }
 
   private filter(): void {    
